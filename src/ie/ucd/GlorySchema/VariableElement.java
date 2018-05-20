@@ -2,20 +2,20 @@ package ie.ucd.GlorySchema;
 
 public class VariableElement extends  GloryElement {
     // instance variables
-    private String mVariableName;
+    private String mName;
     private int mValue;
 
     // constructor
-    public VariableElement(String variableName) {
-        mVariableName = variableName;
+    public VariableElement(String name) {
+        mName = name;
     }
 
-    public String getVariableName() {
-        return mVariableName;
+    public String getName() {
+        return mName;
     }
 
-    public void setVariableName(String variableName) {
-        mVariableName = variableName;
+    public void setName(String name) {
+        mName = name;
     }
 
     public int getValue() {

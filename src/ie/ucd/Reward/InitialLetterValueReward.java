@@ -1,8 +1,8 @@
 package ie.ucd.Reward;
 
-import ie.ucd.GlorySchema.ConstantElement;
-import ie.ucd.GlorySchema.InitialLetterValueElement;
-import ie.ucd.GlorySchema.LetterValueElement;
+import ie.ucd.Glory_Schema.ConstantElement;
+import ie.ucd.Glory_Schema.InitialLetterValueElement;
+import ie.ucd.Glory_Schema.LetterValueElement;
 
 import java.util.ArrayList;
 import java.util.List;

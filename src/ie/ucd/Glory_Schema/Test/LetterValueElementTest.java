@@ -1,6 +1,6 @@
-package ie.ucd.GlorySchema.Test;
+package ie.ucd.Glory_Schema.Test;
 
-import ie.ucd.GlorySchema.LetterValueElement;
+import ie.ucd.Glory_Schema.LetterValueElement;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

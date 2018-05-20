@@ -1,4 +1,4 @@
-package ie.ucd.GlorySchema;
+package ie.ucd.Glory_Schema;
 
 public class ConstantElement extends GloryElement {
     // instance variables

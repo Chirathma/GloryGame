@@ -1,6 +1,6 @@
-package ie.ucd.GlorySchema.Test;
+package ie.ucd.Glory_Schema.Test;
 
-import ie.ucd.GlorySchema.VariableElement;
+import ie.ucd.Glory_Schema.VariableElement;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class VariableElementTest {
 
     @Test
-    public void testGetName(){
+    public void testGetNameConstructor(){
 
         VariableElement element = new VariableElement("glory_game");
 
@@ -24,6 +24,17 @@ class VariableElementTest {
         element.setName("another string");
 
         assertEquals("another string", element.getName());
+
+    }
+
+    @Test
+    public void testGetName(){
+
+        VariableElement element = new VariableElement("glory_game");
+
+        element.setName("foobar");
+
+        assertEquals("foobar", element.getName());
 
     }
 

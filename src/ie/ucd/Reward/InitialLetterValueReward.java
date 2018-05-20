@@ -3,8 +3,10 @@ package ie.ucd.Reward;
 import ie.ucd.Glory_Schema.ConstantElement;
 import ie.ucd.Glory_Schema.InitialLetterValueElement;
 import ie.ucd.Glory_Schema.LetterValueElement;
+import ie.ucd.Glory_Schema.WordElement;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -19,10 +21,12 @@ public class InitialLetterValueReward implements IRewardPolicy {
     private List <LetterValueElement> mElements;
 
     @Override
-    public int getReward(List<LetterValueElement> elements) {
+    public int getReward(WordElement elements) {
+
+        List <LetterValueElement> elementList = Arrays.asList(elements.getLetterValueElements());
 
         // filter out the InitialLetterValueElements
-        findInitialLetters(elements);
+        findInitialLetters(elementList);
 
         // calculate the Glory points
         return calculateGloryPoints();

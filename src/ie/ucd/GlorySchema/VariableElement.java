@@ -3,7 +3,7 @@ package ie.ucd.GlorySchema;
 public class VariableElement extends  GloryElement {
     // instance variables
     private String mVariableName;
-    private int mNumericalValue;
+    private int mValue;
 
     // constructor
     public VariableElement(String variableName) {
@@ -18,11 +18,11 @@ public class VariableElement extends  GloryElement {
         mVariableName = variableName;
     }
 
-    public int getNumericalValue() {
-        return mNumericalValue;
+    public int getValue() {
+        return mValue;
     }
 
-    public void setNumericalValue(int numericalValue) {
-        mNumericalValue = numericalValue;
+    public void setValue(int value) {
+        mValue = value;
     }
 }

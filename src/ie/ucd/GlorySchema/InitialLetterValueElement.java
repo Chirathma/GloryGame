@@ -8,4 +8,10 @@ public class InitialLetterValueElement extends LetterValueElement{
         super(letter, value);
         mInitialPosition = initialPosition;
     }
+
+    // getter for initial position
+
+    public int getInitialPosition() {
+        return mInitialPosition;
+    }
 }

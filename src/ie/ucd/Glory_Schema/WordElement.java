@@ -12,6 +12,7 @@ public class WordElement extends GloryElement {
     // constructor
     public WordElement() {
         mLetterValueElements = new LetterValueElement[WORDSIZE.getValue()];
+        mNumberOfLetters = 0;
     }
 
     public void addLetterValue(LetterValueElement element) throws Exception {

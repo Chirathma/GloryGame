@@ -28,13 +28,6 @@ public class WordElement extends GloryElement {
         mNumberOfLetters++;
     }
 
-    public LetterValueElement getLetterValueElementAt(int index) throws Exception {
-        if(index < 0 || index >= mNumberOfLetters)
-            throw new Exception();
-
-        return mLetterValueElements[index];
-    }
-
     public List<LetterValueElement> getLetterValueElements() {
         return Collections.unmodifiableList(Arrays.asList(mLetterValueElements));
     }

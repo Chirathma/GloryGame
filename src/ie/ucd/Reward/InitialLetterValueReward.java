@@ -23,7 +23,7 @@ public class InitialLetterValueReward implements IRewardPolicy {
     @Override
     public int getReward(WordElement elements) {
 
-        List <LetterValueElement> elementList = Arrays.asList(elements.getLetterValueElements());
+        List <LetterValueElement> elementList = elements.getLetterValueElements();
 
         // filter out the InitialLetterValueElements
         findInitialLetters(elementList);

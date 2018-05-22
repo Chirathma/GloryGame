@@ -27,5 +27,7 @@ public class RewardManager {
         mRewardPolicies.add(new InitialLetterValueReward());
     }
 
+
+
 }
 

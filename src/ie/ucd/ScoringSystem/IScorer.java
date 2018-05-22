@@ -1,4 +1,4 @@
-package ScoringSystem;
+package ie.ucd.ScoringSystem;
 
 public interface IScorer {
 

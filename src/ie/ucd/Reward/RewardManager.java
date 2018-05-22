@@ -4,23 +4,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RewardManager {
-    private static RewardManager ourInstance = new RewardManager();
+    // singleton instance
+    private static RewardManager sRewardManager;
 
+    // List of Reward policies
+    private List<IRewardPolicy> mRewardPolicies;
+
+    // static method to get a RewardManager instance
     public static RewardManager getInstance() {
-        return ourInstance;
+        // check if not instantiated
+        if(sRewardManager == null)
+            sRewardManager = new RewardManager();
+
+        return sRewardManager;
     }
 
-
-
+    // private constructor
     private RewardManager() {
+        mRewardPolicies = new ArrayList<>();
 
-        ArrayList<Object> rewards = new ArrayList<Object>();
-        InitialLetterValueReward obj1 = new InitialLetterValueReward();
-        rewards.add(obj1);
-
-
-
-
+        // Adding current Reward policies
+        mRewardPolicies.add(new InitialLetterValueReward());
     }
 
 }

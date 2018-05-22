@@ -7,7 +7,7 @@ import java.util.List;
 public class WordElement extends GloryElement {
     private static final ConstantElement WORDSIZE = new ConstantElement(11);
 
-    // number of lettervalueelements
+    // number of letterValueElements
     private int mNumberOfLetters;
 
     // member to hold LetterValueElements of the word

@@ -1,5 +1,9 @@
 package ie.ucd.Glory_Schema;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class WordElement extends GloryElement {
     private static final ConstantElement WORDSIZE = new ConstantElement(11);
 
@@ -31,7 +35,7 @@ public class WordElement extends GloryElement {
         return mLetterValueElements[index];
     }
 
-    public LetterValueElement[] getLetterValueElements() {
-        return mLetterValueElements;
+    public List<LetterValueElement> getLetterValueElements() {
+        return Collections.unmodifiableList(Arrays.asList(mLetterValueElements));
     }
 }

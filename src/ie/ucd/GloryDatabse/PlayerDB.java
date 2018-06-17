@@ -21,12 +21,12 @@ public class PlayerDB {
     public void addPlayer(User user)
     {
         try {
-   //         String insertQuery = "insert into " + players ;
-    //        insertQuery += " values( null, '" + user.getUsername();
-    //        insertQuery += "', '" + user.getPassword();
-    //        insertQuery += "', '" + user.getEmail();
-    //        insertQuery += "' )";
-    //        pst = con.prepareStatement(insertQuery);
+           String insertQuery = "insert into players " ;
+            insertQuery += " values( null, '" + user.getUsername();
+            insertQuery += "', '" + user.getPassword();
+            insertQuery += "', '" + user.getEmail();
+            insertQuery += "' )";
+            pst = con.prepareStatement(insertQuery);
             pst.execute();
         }
         catch (SQLException e) {

@@ -18,6 +18,7 @@ public class PlayerDB {
         con = DatabaseConnector.connect();
     }
 
+//Add new player
     public void addPlayer(User user)
     {
         try {
@@ -34,26 +35,29 @@ public class PlayerDB {
         }
     }
 
+    //identify there is a player details in the database that matches with the user entered data
     public void getPlayerByUsernamePassword(User user)
     {
+
         String r = "SELECT pusername , ppwd from players where pusername = '"+ user.getUsername()+"' ";
         try {
             pst=con.prepareStatement(r);
             pst.executeQuery();
 
-            if (rs==null)
+            //redirect to the particular page
+            if (r!=null)
             {
-                //Create current interface object(obj1)
-             //   SignInInterfaceName  signInInterfaceNameobj = new  SignInInterfaceName();
-             //   signInInterfaceNameobj.setVisible(true);
-             //   this.dispose();
+                //Create next interface object(obj2)
+                //   NextInterfaceName nextInterfaceNameobj = new NextInterfaceName();
+                //   nextInterfaceNameobj2.setVisible(true);
+                //   this.dispose();
             }
 
             else {
-                //Create next interface object(obj2)
-             //   NextInterfaceName nextInterfaceNameobj = new NextInterfaceName();
-             //   nextInterfaceNameobj2.setVisible(true);
-             //   this.dispose();
+                //Create current interface object(obj1)
+                //   SignInInterfaceName  signInInterfaceNameobj = new  SignInInterfaceName();
+                //   signInInterfaceNameobj.setVisible(true);
+                //   this.dispose();
             }
         } catch (SQLException e) {
             e.printStackTrace();

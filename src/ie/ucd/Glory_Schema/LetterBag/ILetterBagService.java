@@ -11,4 +11,5 @@ public interface ILetterBagService {
      InitialLetterValueElement getInitialLetters();
      LetterValueElement getVowel();
      LetterValueElement getConsonant();
+
 }

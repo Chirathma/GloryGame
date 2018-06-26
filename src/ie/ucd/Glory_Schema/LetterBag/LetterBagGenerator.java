@@ -14,7 +14,7 @@ public class LetterBagGenerator implements ILetterBagGenerator {
     private ArrayList<LetterValueElement> consonantLetters;
     final private ArrayList<LetterValueElement> letterlist;
 
-    public LetterBagGenerator() {
+    LetterBagGenerator() {
         LetterValueElement aTile = new LetterValueElement('A', 1);
         LetterValueElement bTile = new LetterValueElement('B', 3);
         LetterValueElement cTile = new LetterValueElement('C', 3);
@@ -177,7 +177,6 @@ public class LetterBagGenerator implements ILetterBagGenerator {
 
     @Override
     public ArrayList<LetterValueElement> generateLetterBag() {
-        System.out.println("LBG Letters size: " + letterlist.size());
         for (int i = 0; i < letterlist.size(); i++)
             System.out.println("LBG generate the letter bag: " + letterlist.get(i).getLetter());
         return letterlist;
@@ -186,7 +185,6 @@ public class LetterBagGenerator implements ILetterBagGenerator {
 
     @Override
     public ArrayList<LetterValueElement> generateVowelLetter() {
-        System.out.println("LBG vowelLetters size: " + vowelLetters.size());
         for (int i = 0; i < vowelLetters.size(); i++)
             System.out.println("LBG vowels generated : " + vowelLetters.get(i).getLetter());
 
@@ -195,7 +193,6 @@ public class LetterBagGenerator implements ILetterBagGenerator {
 
     @Override
     public ArrayList<LetterValueElement> generateConsonantLetter() {
-        System.out.println("LBG consonantLetters size: " + consonantLetters.size());
         for (int i = 0; i < consonantLetters.size(); i++)
             System.out.println("LBG consonants generated : " + consonantLetters.get(i).getLetter());
 

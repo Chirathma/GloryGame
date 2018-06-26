@@ -1,13 +1,14 @@
 package ie.ucd.Glory_Schema.LetterBag;
 
+import ie.ucd.Glory_Schema.InitialLetterValueElement;
+import ie.ucd.Glory_Schema.LetterValueElement;
+
 /**
  * Created by Devni on 6/13/2018.
  */
 public interface ILetterBag{
 
-     char getVowelLetter();
-     char getConsonantLetter();
-     char getInitialLetters();
-     void shuffleLetters();
-
+     LetterValueElement getVowelLetter();
+     LetterValueElement getConsonantLetter();
+     InitialLetterValueElement getInitialLetter();
 }

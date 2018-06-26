@@ -28,6 +28,10 @@ public class Game extends Application{
     private Alphabet[] initialLetters;
     private Tile[] selectiveLetterSet;
 
+    Text roundValue;
+    Text scoreValue;
+    Text playerName;
+
 
     private BorderPane root;
 
@@ -36,7 +40,12 @@ public class Game extends Application{
         Text round    = createLabel("ROUND:", Color.YELLOW, 18);
         Text score    = createLabel("SCORE:", Color.YELLOW, 18 );
         Text player   = createLabel("PLAYER:", Color.YELLOW, 18 );
-        Text dummy    = createLabel("100", Color.WHITE, 12 );
+        //Text dummy    = createLabel("100", Color.WHITE, 12 );
+
+        //labels for displaying data on scoreboard
+        roundValue    = createLabel("", Color.WHITE, 14);
+        scoreValue    = createLabel("", Color.WHITE, 14 );
+        playerName   = createLabel("", Color.WHITE, 14 );
 
         Text centerLabel = new Text("Your initial letters~");
         Text letterBagLabel = new Text("Please select your letters~");
@@ -172,7 +181,9 @@ public class Game extends Application{
         scoreBoard.add(player, 0, 0);
         scoreBoard.add(round, 1, 0);
         scoreBoard.add(score, 2, 0);
-        scoreBoard.add(dummy, 2, 1);
+        scoreBoard.add(playerName, 0, 1);
+        scoreBoard.add(roundValue, 1, 1);
+        scoreBoard.add(scoreValue, 2, 1);
         // Tile group
         Group initialLettersGroup = new Group();
 
@@ -264,6 +275,18 @@ public class Game extends Application{
         initialLetters[1] = i2;
         initialLetters[2] = i3;
 
+    }
+
+    public void setPlayer (String name){
+        playerName.setText(name);
+    }
+
+    public void setRound (int round){
+        roundValue.setText(Integer.toString(round));
+    }
+
+    public void setScore (int score){
+        scoreValue.setText(Integer.toString(score));
     }
 
 }

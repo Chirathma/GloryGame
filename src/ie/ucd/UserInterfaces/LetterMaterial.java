@@ -3,13 +3,20 @@ package ie.ucd.UserInterfaces;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
+import javafx.scene.image.Image;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class LetterMaterial extends StackPane{
 
@@ -20,15 +27,38 @@ public class LetterMaterial extends StackPane{
         return letter;
     }
 
-    public LetterMaterial (Alphabet letter, int size, int y) {
+    public LetterMaterial (Alphabet letter, PieceType type, int size, int y) {
         this.letter = letter;
         weight = letter.value;
-        Rectangle background = new Rectangle(size, size);
-        background.setStroke(Color.YELLOW);
-        background.setFill(Color.GOLD);
 
-        background.setArcHeight(5);
-        background.setArcWidth(5);
+        Rectangle background1 = new Rectangle(size, size);
+        background1.setStroke(Color.YELLOW);
+        Rectangle background2 = new Rectangle(size, size);
+        background2.setStroke(Color.YELLOW);
+        background1.setArcHeight(5);
+        background1.setArcWidth(5);
+        background2.setArcHeight(5);
+        background2.setArcWidth(5);
+
+        // open images file & create an image object for background
+        InputStream imageIn1   = null;
+        InputStream imageIn2   = null;
+        Image initBackground   = null;
+        Image commonBackground = null;
+        try {
+            imageIn1 = Files.newInputStream(Paths.get("res/images/goldfoil.jpg"));
+            imageIn2 = Files.newInputStream(Paths.get("res/images/oldpaper.jpg"));
+            initBackground   = new Image(imageIn1);
+            commonBackground = new Image(imageIn2);
+            imageIn1.close();
+            imageIn2.close();
+
+        } catch (IOException e) {
+            background1.setFill(Color.GOLD);
+            background2.setFill(Color.LIGHTGREY);
+        }
+        background1.setFill(new ImagePattern(initBackground));
+        background2.setFill(new ImagePattern(commonBackground));
 
         // the label for the letter
         Text letterLabel = new Text(toString());
@@ -71,9 +101,10 @@ public class LetterMaterial extends StackPane{
         GridPane.setHalignment(weightLabel, HPos.LEFT);
         GridPane.setValignment(weightLabel, VPos.TOP);
         // add background & letterGrid to this inherited pane
-        getChildren().addAll(background ,letterGrid);
-
-
+        if (type == PieceType.INIT)
+            getChildren().addAll(background1 ,letterGrid);
+        else if(type == PieceType.COMMON)
+            getChildren().addAll(background2 ,letterGrid);
 
         setOnMousePressed(event -> {
 //            mouseX = event.getSceneX();

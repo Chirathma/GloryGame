@@ -9,9 +9,10 @@ import ie.ucd.Glory_Schema.LetterValueElement;
 public class LetterBagService implements ILetterBagService {
 
     private LetterBagGenerator letterBagGenerator = new LetterBagGenerator();
-    private LetterBag letterBag = new LetterBag(letterBagGenerator);
+    private ILetterBag letterBag = new LetterBag(letterBagGenerator);
 
     public LetterBagService(ILetterBag letterBag) {
+        this.letterBag = letterBag;
     }
 
     public LetterBagService() {

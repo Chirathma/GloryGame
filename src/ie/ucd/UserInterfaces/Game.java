@@ -1,8 +1,10 @@
 package ie.ucd.UserInterfaces;
 
 import javafx.application.Application;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -184,6 +186,14 @@ public class Game extends Application{
         scoreBoard.add(playerName, 0, 1);
         scoreBoard.add(roundValue, 1, 1);
         scoreBoard.add(scoreValue, 2, 1);
+
+        // Setting label alignments
+        GridPane.setHalignment(playerName, HPos.RIGHT);
+        GridPane.setValignment(playerName, VPos.TOP);
+        GridPane.setHalignment(scoreValue, HPos.RIGHT);
+        GridPane.setValignment(scoreValue, VPos.TOP);
+        GridPane.setHalignment(roundValue, HPos.RIGHT);
+        GridPane.setValignment(roundValue, VPos.TOP);
         // Tile group
         Group initialLettersGroup = new Group();
 

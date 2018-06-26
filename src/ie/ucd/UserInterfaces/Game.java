@@ -1,9 +1,12 @@
 package ie.ucd.UserInterfaces;
 
 import javafx.application.Application;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
@@ -27,6 +30,11 @@ public class Game extends Application{
     private static final int INIT_SIZE  = 3;
     private Alphabet[] initialLetters;
     private Tile[] selectiveLetterSet;
+    private Alphabet selectedLetter;
+
+    private Text roundValue;
+    private Text scoreValue;
+    private Text playerName;
 
 
     private BorderPane root;
@@ -36,7 +44,12 @@ public class Game extends Application{
         Text round    = createLabel("ROUND:", Color.YELLOW, 18);
         Text score    = createLabel("SCORE:", Color.YELLOW, 18 );
         Text player   = createLabel("PLAYER:", Color.YELLOW, 18 );
-        Text dummy    = createLabel("100", Color.WHITE, 12 );
+        //Text dummy    = createLabel("100", Color.WHITE, 14 );
+
+        //labels for displaying data on scoreboard
+        roundValue    = createLabel("", Color.WHITE, 14);
+        scoreValue    = createLabel("", Color.WHITE, 14 );
+        playerName   = createLabel("", Color.WHITE, 14 );
 
         Text centerLabel = new Text("Your initial letters~");
         Text letterBagLabel = new Text("Please select your letters~");
@@ -125,6 +138,14 @@ public class Game extends Application{
 
         for(int x = 0; x< TILE_WIDTH; x++){
             Tile tile = new Tile(false, x, 0);
+            //Event listener for the selection of the tile
+            tile.setOnMouseClicked(event -> {
+                Node source = (Node)event.getSource();
+                int colIndex = GridPane.getColumnIndex(source);
+                int rowIndex = GridPane.getRowIndex(source);
+                LetterMaterial selectedPiece = new LetterMaterial(selectedLetter, 75, 0);
+                selectivePane.add(selectedPiece, colIndex, rowIndex);
+            });
             selectivePane.add(tile, x, 0);
             selectiveLetterSet[x] = tile;
         }
@@ -146,6 +167,12 @@ public class Game extends Application{
         for(Alphabet alphabet : Alphabet.values()){
             LetterMaterial bagLetter = null;
             bagLetter = createPiece(alphabet, 55, 0);
+
+            // Event listener for a piece in letter bag
+            bagLetter.setOnMouseClicked(event -> {
+                LetterMaterial source = (LetterMaterial) event.getSource();
+                selectedLetter = source.getLetterValue();
+            });
             bagLetters[count]=bagLetter;
             count++;
         }
@@ -169,10 +196,22 @@ public class Game extends Application{
         scoreBoard.setStyle("-fx-background-color: rgba(0, 100, 100, 0.0); -fx-border-radius: 0;" +
                 "-fx-border-insets: 5; -fx-border-style: solid\n;" +
                 " -fx-padding: 10; -fx-border-width: 0; -fx-background-radius: 5;");
+
+        // adding child labels to the scoreboard
         scoreBoard.add(player, 0, 0);
         scoreBoard.add(round, 1, 0);
         scoreBoard.add(score, 2, 0);
-        scoreBoard.add(dummy, 2, 1);
+        scoreBoard.add(playerName, 0, 1);
+        scoreBoard.add(roundValue, 1, 1);
+        scoreBoard.add(scoreValue, 2, 1);
+
+        // Setting label alignments
+        GridPane.setHalignment(playerName, HPos.RIGHT);
+        GridPane.setValignment(playerName, VPos.TOP);
+        GridPane.setHalignment(scoreValue, HPos.RIGHT);
+        GridPane.setValignment(scoreValue, VPos.TOP);
+        GridPane.setHalignment(roundValue, HPos.RIGHT);
+        GridPane.setValignment(roundValue, VPos.TOP);
         // Tile group
         Group initialLettersGroup = new Group();
 
@@ -264,6 +303,18 @@ public class Game extends Application{
         initialLetters[1] = i2;
         initialLetters[2] = i3;
 
+    }
+
+    public void setPlayer (String name){
+        playerName.setText(name);
+    }
+
+    public void setRound (int round){
+        roundValue.setText(Integer.toString(round));
+    }
+
+    public void setScore (int score){
+        scoreValue.setText(Integer.toString(score));
     }
 
 }

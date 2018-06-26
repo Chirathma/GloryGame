@@ -6,6 +6,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
@@ -29,10 +30,11 @@ public class Game extends Application{
     private static final int INIT_SIZE  = 3;
     private Alphabet[] initialLetters;
     private Tile[] selectiveLetterSet;
+    private Alphabet selectedLetter;
 
-    Text roundValue;
-    Text scoreValue;
-    Text playerName;
+    private Text roundValue;
+    private Text scoreValue;
+    private Text playerName;
 
 
     private BorderPane root;
@@ -42,7 +44,7 @@ public class Game extends Application{
         Text round    = createLabel("ROUND:", Color.YELLOW, 18);
         Text score    = createLabel("SCORE:", Color.YELLOW, 18 );
         Text player   = createLabel("PLAYER:", Color.YELLOW, 18 );
-        //Text dummy    = createLabel("100", Color.WHITE, 12 );
+        //Text dummy    = createLabel("100", Color.WHITE, 14 );
 
         //labels for displaying data on scoreboard
         roundValue    = createLabel("", Color.WHITE, 14);
@@ -136,6 +138,14 @@ public class Game extends Application{
 
         for(int x = 0; x< TILE_WIDTH; x++){
             Tile tile = new Tile(false, x, 0);
+            //Event listener for the selection of the tile
+            tile.setOnMouseClicked(event -> {
+                Node source = (Node)event.getSource();
+                int colIndex = GridPane.getColumnIndex(source);
+                int rowIndex = GridPane.getRowIndex(source);
+                LetterMaterial selectedPiece = new LetterMaterial(selectedLetter, 75, 0);
+                selectivePane.add(selectedPiece, colIndex, rowIndex);
+            });
             selectivePane.add(tile, x, 0);
             selectiveLetterSet[x] = tile;
         }
@@ -157,6 +167,12 @@ public class Game extends Application{
         for(Alphabet alphabet : Alphabet.values()){
             LetterMaterial bagLetter = null;
             bagLetter = createPiece(alphabet, 55, 0);
+
+            // Event listener for a piece in letter bag
+            bagLetter.setOnMouseClicked(event -> {
+                LetterMaterial source = (LetterMaterial) event.getSource();
+                selectedLetter = source.getLetterValue();
+            });
             bagLetters[count]=bagLetter;
             count++;
         }
@@ -180,6 +196,8 @@ public class Game extends Application{
         scoreBoard.setStyle("-fx-background-color: rgba(0, 100, 100, 0.0); -fx-border-radius: 0;" +
                 "-fx-border-insets: 5; -fx-border-style: solid\n;" +
                 " -fx-padding: 10; -fx-border-width: 0; -fx-background-radius: 5;");
+
+        // adding child labels to the scoreboard
         scoreBoard.add(player, 0, 0);
         scoreBoard.add(round, 1, 0);
         scoreBoard.add(score, 2, 0);

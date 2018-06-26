@@ -118,7 +118,7 @@ public class Game extends Application{
             initPane.add(tile, i, 0);
 
             LetterMaterial initLetter = null;
-            initLetter = createPiece(initialLetters[i], 75, 0);
+            initLetter = createPiece(initialLetters[i],PieceType.INIT, 75, 0);
             tile.setLetter(initLetter);
             initPane.add(initLetter, i, 0);
 
@@ -143,7 +143,7 @@ public class Game extends Application{
                 Node source = (Node)event.getSource();
                 int colIndex = GridPane.getColumnIndex(source);
                 int rowIndex = GridPane.getRowIndex(source);
-                LetterMaterial selectedPiece = new LetterMaterial(selectedLetter, 75, 0);
+                LetterMaterial selectedPiece = new LetterMaterial(selectedLetter, PieceType.COMMON,75, 0);
                 selectivePane.add(selectedPiece, colIndex, rowIndex);
             });
             selectivePane.add(tile, x, 0);
@@ -166,7 +166,7 @@ public class Game extends Application{
         int count = 0;
         for(Alphabet alphabet : Alphabet.values()){
             LetterMaterial bagLetter = null;
-            bagLetter = createPiece(alphabet, 55, 0);
+            bagLetter = createPiece(alphabet, PieceType.COMMON,55, 0);
 
             // Event listener for a piece in letter bag
             bagLetter.setOnMouseClicked(event -> {
@@ -274,8 +274,8 @@ public class Game extends Application{
 //            return (int)
 //    }
 
-    private  LetterMaterial createPiece(Alphabet letter, int x, int y){
-        LetterMaterial letterPiece = new LetterMaterial(letter, x, y);
+    private  LetterMaterial createPiece(Alphabet letter, PieceType pieceType, int x, int y){
+        LetterMaterial letterPiece = new LetterMaterial(letter, pieceType, x, y);
         letterPiece.setOnMouseReleased(event -> {
             double newX = letterPiece.getLayoutX();
             double newY = letterPiece.getLayoutY();
